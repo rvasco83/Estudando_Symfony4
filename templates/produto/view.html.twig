@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Visualizaçõa de produto -
+{% endblock %}
+
+{% block body %}
+    <h1>Visualizar Produtos - <small>{{ produto.nome }}</small></h1>
+    <hr>
+    <table class="table table-striped">
+        <tboby>
+            <tr>
+                <th>Cod.</th>
+                <td>{{ produto.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ produto.nome }}</td>
+            </tr>
+            <tr>
+                <th>Preço</th>
+                <td>{{ produto.preco|number_format(2, ",", ".") }}</td>
+            </tr>
+            <tr>
+                <th>Descrição</th>
+                <td>{{ produto.descricao|nl2br }}</td>
+            </tr>
+        </tboby>
+    </table>
+
+    <a href="{{ path('listar_produto') }}" class="btn btn-primary btn">Voltar</a>
+    <a href="{{ path('editar_produto', {"id": produto.id}) }}" class="btn btn-primary btn">Editar</a>
+
+{% endblock %}

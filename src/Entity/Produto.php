@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+
+use App\Controller\ProdutoController;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProdutoRepository")
@@ -13,6 +16,7 @@ class Produto
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
      */
     private $id;
 
@@ -20,6 +24,8 @@ class Produto
      * @var string
      *
      * @ORM\Column (type="string", length=100)
+     * @Assert\NotBlank(message="Campo nome não pode ser vazio!")
+     *
      */
     private $nome;
 
@@ -27,8 +33,18 @@ class Produto
      * @var float
      *
      * @ORM\Column (type="decimal", scale=2)
+     * @Assert\NotBlank(message="Campo preço não pode ser vazio!")
+     *
      */
     private $preco;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column (type="text")
+     *
+     */
+    private $descricao;
 
     /**
      * @return mixed
@@ -77,6 +93,7 @@ class Produto
     /**
      * @param float $preco
      * @return Produto
+     *
      */
     public function setPreco ($preco)
     {
@@ -84,5 +101,22 @@ class Produto
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getDescricao ()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * @param string $descricao
+     * @return Produto
+     */
+    public function setDescricao ($descricao)
+    {
+        $this->descricao = $descricao;
+        return $this;
+    }
 
 }

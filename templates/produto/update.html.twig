@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Edição de produto -
+{% endblock %}
+
+{% block body %}
+    <h1>Editar Produtos - <small>{{ produto.nome }}</small></h1>
+    <hr>
+   {% include "produto/_form.html.twig" %}
+
+    <a href="{{ path('listar_produto') }}" class="btn btn-primary btn">Cancelar</a>
+{% endblock %}
